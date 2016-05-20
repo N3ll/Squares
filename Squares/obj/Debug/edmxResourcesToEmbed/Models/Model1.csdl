@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="squaresModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="creation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="squareSetID" Type="Int32" Nullable="false" />
+    <Property Name="userID" Type="Int32" />
+    <Property Name="fields" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="finalized" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="squareSet" Relationship="Self.FK__creation__square__436BFEE3" FromRole="creation" ToRole="squareSet" />
+    <NavigationProperty Name="user" Relationship="Self.FK__creation__userID__4460231C" FromRole="creation" ToRole="user" />
+    <NavigationProperty Name="order" Relationship="Self.FK__order__creationI__4830B400" FromRole="creation" ToRole="order" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="orderType" Type="Int32" Nullable="false" />
+    <Property Name="userID" Type="Int32" Nullable="false" />
+    <Property Name="creationID" Type="Int32" Nullable="false" />
+    <Property Name="orderStatus" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="creation" Relationship="Self.FK__order__creationI__4830B400" FromRole="order" ToRole="creation" />
+    <NavigationProperty Name="user" Relationship="Self.FK__order__userID__473C8FC7" FromRole="order" ToRole="user" />
+  </EntityType>
+  <EntityType Name="privileges">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="userRole_privileges" Relationship="Self.FK__userRole___privi__3AD6B8E2" FromRole="privileges" ToRole="userRole_privileges" />
+  </EntityType>
+  <EntityType Name="squareSet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="demoSet" Type="Boolean" Nullable="false" />
+    <Property Name="rating" Type="Int32" Nullable="false" />
+    <Property Name="userID" Type="Int32" Nullable="false" />
+    <Property Name="defaultFields" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="expandable" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="creation" Relationship="Self.FK__creation__square__436BFEE3" FromRole="squareSet" ToRole="creation" />
+    <NavigationProperty Name="user" Relationship="Self.FK__squareSet__userI__408F9238" FromRole="squareSet" ToRole="user" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="roleID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="creation" Relationship="Self.FK__creation__userID__4460231C" FromRole="user" ToRole="creation" />
+    <NavigationProperty Name="order" Relationship="Self.FK__order__userID__473C8FC7" FromRole="user" ToRole="order" />
+    <NavigationProperty Name="squareSet" Relationship="Self.FK__squareSet__userI__408F9238" FromRole="user" ToRole="squareSet" />
+    <NavigationProperty Name="userRole" Relationship="Self.FK__user__roleID__3DB3258D" FromRole="user" ToRole="userRole" />
+    <Property Name="desc" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="userRole">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="user" Relationship="Self.FK__user__roleID__3DB3258D" FromRole="userRole" ToRole="user" />
+    <NavigationProperty Name="userRole_privileges" Relationship="Self.FK__userRole___roleI__39E294A9" FromRole="userRole" ToRole="userRole_privileges" />
+  </EntityType>
+  <EntityType Name="userRole_privileges">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="roleID" Type="Int32" Nullable="false" />
+    <Property Name="privilegeID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="privileges" Relationship="Self.FK__userRole___privi__3AD6B8E2" FromRole="userRole_privileges" ToRole="privileges" />
+    <NavigationProperty Name="userRole" Relationship="Self.FK__userRole___roleI__39E294A9" FromRole="userRole_privileges" ToRole="userRole" />
+  </EntityType>
+  <Association Name="FK__creation__square__436BFEE3">
+    <End Role="squareSet" Type="Self.squareSet" Multiplicity="1" />
+    <End Role="creation" Type="Self.creation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="squareSet">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="creation">
+        <PropertyRef Name="squareSetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__creation__userID__4460231C">
+    <End Role="user" Type="Self.user" Multiplicity="0..1" />
+    <End Role="creation" Type="Self.creation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="creation">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order__creationI__4830B400">
+    <End Role="creation" Type="Self.creation" Multiplicity="1" />
+    <End Role="order" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="creation">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="creationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order__userID__473C8FC7">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="order" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__userRole___privi__3AD6B8E2">
+    <End Role="privileges" Type="Self.privileges" Multiplicity="1" />
+    <End Role="userRole_privileges" Type="Self.userRole_privileges" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="privileges">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="userRole_privileges">
+        <PropertyRef Name="privilegeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__squareSet__userI__408F9238">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="squareSet" Type="Self.squareSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="squareSet">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user__roleID__3DB3258D">
+    <End Role="userRole" Type="Self.userRole" Multiplicity="1" />
+    <End Role="user" Type="Self.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="userRole">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user">
+        <PropertyRef Name="roleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__userRole___roleI__39E294A9">
+    <End Role="userRole" Type="Self.userRole" Multiplicity="1" />
+    <End Role="userRole_privileges" Type="Self.userRole_privileges" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="userRole">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="userRole_privileges">
+        <PropertyRef Name="roleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_9FDB6F_squaresEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="creation" EntityType="Self.creation" />
+    <EntitySet Name="order" EntityType="Self.order" />
+    <EntitySet Name="privileges" EntityType="Self.privileges" />
+    <EntitySet Name="squareSet" EntityType="Self.squareSet" />
+    <EntitySet Name="user" EntityType="Self.user" />
+    <EntitySet Name="userRole" EntityType="Self.userRole" />
+    <EntitySet Name="userRole_privileges" EntityType="Self.userRole_privileges" />
+    <AssociationSet Name="FK__creation__square__436BFEE3" Association="Self.FK__creation__square__436BFEE3">
+      <End Role="squareSet" EntitySet="squareSet" />
+      <End Role="creation" EntitySet="creation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__creation__userID__4460231C" Association="Self.FK__creation__userID__4460231C">
+      <End Role="user" EntitySet="user" />
+      <End Role="creation" EntitySet="creation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order__creationI__4830B400" Association="Self.FK__order__creationI__4830B400">
+      <End Role="creation" EntitySet="creation" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order__userID__473C8FC7" Association="Self.FK__order__userID__473C8FC7">
+      <End Role="user" EntitySet="user" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__userRole___privi__3AD6B8E2" Association="Self.FK__userRole___privi__3AD6B8E2">
+      <End Role="privileges" EntitySet="privileges" />
+      <End Role="userRole_privileges" EntitySet="userRole_privileges" />
+    </AssociationSet>
+    <AssociationSet Name="FK__squareSet__userI__408F9238" Association="Self.FK__squareSet__userI__408F9238">
+      <End Role="user" EntitySet="user" />
+      <End Role="squareSet" EntitySet="squareSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user__roleID__3DB3258D" Association="Self.FK__user__roleID__3DB3258D">
+      <End Role="userRole" EntitySet="userRole" />
+      <End Role="user" EntitySet="user" />
+    </AssociationSet>
+    <AssociationSet Name="FK__userRole___roleI__39E294A9" Association="Self.FK__userRole___roleI__39E294A9">
+      <End Role="userRole" EntitySet="userRole" />
+      <End Role="userRole_privileges" EntitySet="userRole_privileges" />
+    </AssociationSet>
+    <FunctionImport Name="getSetByUser" ReturnType="Collection(squaresModel.getSetByUser_Result)">
+      <Parameter Name="username" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="setRating">
+      <Parameter Name="squareSetID" Mode="In" Type="Int32" />
+      <Parameter Name="isPositive" Mode="In" Type="Boolean" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="getSetByUser_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="SquareSet" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="IsDemoSet" Nullable="false" />
+    <Property Type="Int32" Name="Rating" Nullable="false" />
+    <Property Type="Boolean" Name="IsExpandable" Nullable="false" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-Squares-20160511044007.mdf;Initial Catalog=aspnet-Squares-20160511044007;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Mikkel\\Documents\\Visual\ Studio\ 2015\\Projects\\Exam\\Squares\\Squares\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="DB_9FDB6F_squaresEntities-Web.config Connection String" description="DB_9FDB6F_squaresEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.Model1.csdl|res://*/Models.Model1.ssdl|res://*/Models.Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=SQL5016.myASP.NET;initial catalog=DB_9FDB6F_squares;persist security info=True;user id=DB_9FDB6F_squares_admin;password=sq123456;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Mikkel\\Documents\\Visual\ Studio\ 2015\\Projects\\Exam\\Squares\\Squares\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DB_9FDB6F_squaresEntities']/@connectionString" />
+  </parameter>
+</parameters>

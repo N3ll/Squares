@@ -1,0 +1,32 @@
+{
+  "siteName": {
+    "value": "Squares-group5"
+  },
+  "hostingPlanName": {
+    "value": "squares-group5"
+  },
+  "siteLocation": {
+    "value": "West Europe"
+  },
+  "sku": {
+    "value": "Free"
+  },
+  "workerSize": {
+    "value": "0"
+  },
+  "serverName": {
+    "value": "squaresgp05"
+  },
+  "serverLocation": {
+    "value": "West Europe"
+  },
+  "administratorLogin": {
+    "value": "squares"
+  },
+  "administratorLoginPassword": {
+    "value": "sq12345&"
+  },
+  "databaseName": {
+    "value": "Squares-group5_db"
+  }
+}

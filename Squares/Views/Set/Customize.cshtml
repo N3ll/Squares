@@ -1,0 +1,35 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 cont">
+            <h3 class="text-center">{{customizeCtrl.customizableSet.name + " by "+customizeCtrl.customizableSet.author}}</h3>
+            <p class="text-center">{{customizeCtrl.customizableSet.description}}</p>
+
+
+            <div class="clearfix grid-size">
+                <div ng-repeat="set in customizeCtrl.movable  track by $index">
+                    <div ng-model="customizeCtrl.movable[$index]" class="square" data-drop="true" jqyoui-droppable data-drag="true" jqyoui-draggable data-jqyoui-options="{snap:'.square',snapMode:'inner',revert: 'invalid'}">
+                        <img ng-src="/Content/images/sq-bg.png" class="img-responsive" ng-hide="customizeCtrl.movable[$index].img">
+                        <img ng-src="{{customizeCtrl.movable[$index].img}}" class="img-responsive" ng-show="customizeCtrl.movable[$index].img">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-10 col-sm-push-1">
+                    <a href="#" class="btn btn-default pull-left customize-btn">Grid</a>
+                    <a href="#" class="btn btn-default pull-left customize-btn">Clear</a>
+                    <a href="#" ng-click="customizeCtrl.save()" class="btn btn-default pull-right customize-btn">Save</a>
+                    <a href="#" class="btn btn-default pull-right customize-btn">Order</a>
+                </div>
+            </div>
+
+            <div class="horizontal-scroll" data-drop="true" ng-model='customizeCtrl.customizableSet.squares' data-jqyoui-options jqyoui-droppable>
+                <ul class="inline-list list-inline">
+                    <li class="scroll-item" ng-repeat="square in customizeCtrl.customizableSet.squares" data-drag="true" ng-model="customizeCtrl.customizableSet.squares" jqyoui-draggable="{index: {{$index}}}" data-jqyoui-options="{helper:'clone',snap:'.square',snapMode:'inner',revert: 'invalid'}">
+                        <img ng-src="{{square.img}}" class="inside-scroll img-responsive">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

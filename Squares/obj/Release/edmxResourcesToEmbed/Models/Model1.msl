@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="squaresModelStoreContainer" CdmEntityContainer="DB_9FDB6F_squaresEntities">
+    <EntitySetMapping Name="creation">
+      <EntityTypeMapping TypeName="squaresModel.creation">
+        <MappingFragment StoreEntitySet="creation">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="squareSetID" ColumnName="squareSetID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="fields" ColumnName="fields" />
+          <ScalarProperty Name="finalized" ColumnName="finalized" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order">
+      <EntityTypeMapping TypeName="squaresModel.order">
+        <MappingFragment StoreEntitySet="order">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="orderType" ColumnName="orderType" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="creationID" ColumnName="creationID" />
+          <ScalarProperty Name="orderStatus" ColumnName="orderStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="privileges">
+      <EntityTypeMapping TypeName="squaresModel.privileges">
+        <MappingFragment StoreEntitySet="privileges">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="squareSet">
+      <EntityTypeMapping TypeName="squaresModel.squareSet">
+        <MappingFragment StoreEntitySet="squareSet">
+          <ScalarProperty Name="desc" ColumnName="desc" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="demoSet" ColumnName="demoSet" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="defaultFields" ColumnName="defaultFields" />
+          <ScalarProperty Name="expandable" ColumnName="expandable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user">
+      <EntityTypeMapping TypeName="squaresModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="socialTW" ColumnName="socialTW" />
+          <ScalarProperty Name="socialIG" ColumnName="socialIG" />
+          <ScalarProperty Name="socialFB" ColumnName="socialFB" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="street" ColumnName="street" />
+          <ScalarProperty Name="desc" ColumnName="desc" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="roleID" ColumnName="roleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userRole">
+      <EntityTypeMapping TypeName="squaresModel.userRole">
+        <MappingFragment StoreEntitySet="userRole">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userRole_privileges">
+      <EntityTypeMapping TypeName="squaresModel.userRole_privileges">
+        <MappingFragment StoreEntitySet="userRole_privileges">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="roleID" ColumnName="roleID" />
+          <ScalarProperty Name="privilegeID" ColumnName="privilegeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="getSetByUser" FunctionName="squaresModel.Store.getSetByUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="squaresModel.getSetByUser_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SquareSet" ColumnName="SquareSet" />
+          <ScalarProperty Name="IsDemoSet" ColumnName="IsDemoSet" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="IsExpandable" ColumnName="IsExpandable" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="setRating" FunctionName="squaresModel.Store.setRating" />
+    <EntitySetMapping Name="comment">
+      <EntityTypeMapping TypeName="squaresModel.comment">
+        <MappingFragment StoreEntitySet="comment">
+          <ScalarProperty Name="squareSetID" ColumnName="squareSetID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

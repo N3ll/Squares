@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html ng-app="Squares">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Squares</title>
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Exo:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    @Styles.Render("~/Content/css")
+</head>
+
+<body>
+    <div class="container-fluid container-sm-height">
+        <div class="row row-sm-height">
+            <div class="col-sm-9 col-sm-push-3 no-gutter col-sm-height ">
+                <header>
+                    <nav class="navbar navbar-default navbar-custom" role="navigation">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed btn btn-default pull-left" data-toggle="collapse" data-target="#categories">Categories</button>
+
+                                <a class="navbar-brand visible-xs" href="#/"><img src="/Content/images/logo-45.png" alt="Brand"></a>
+
+                                <button type="button" class="navbar-toggle collapsed pull-right" data-toggle="collapse" data-target="#nav-links">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+
+                                <a href="#/profile" class="btn btn-default btn-lg visible-xs pull-right user-icons">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                </a>
+                            </div>
+
+
+                            <div class="collapse navbar-collapse" id="nav-links">
+                                <ul class="nav navbar-nav">
+                                    <li class="active"><a href="#/">Home<span class="sr-only">(current)</span></a></li>
+                                    <li><a href="#/aboutus">About us</a></li>
+                         
+                                </ul>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="#/profile">Profile</a></li>
+                                    <li><a href="#/login">Log in</a></li>
+                                    <li><a href="#/register">Register</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+
+                <main ng-view></main>
+
+            </div>
+            <div class="col-sm-3 col-sm-pull-9 no-gutter col-sm-height aside-drop-down">
+                <aside class="collapse navbar-collapse" id="categories">
+                    <a href="#/" class="hidden-xs"><img src="/Content/images/logo-196.png" class="img-responsive" alt="Brand"></a>
+                    <ul class="nav">
+                        <li><a href="#">ABSTRACT</a></li>
+                        <li class="active"><a href="#">PEOPLE</a></li>
+                        <li><a href="#">NATURE</a></li>
+                        <li><a href="#">TEXTURE</a></li>
+                        <li><a href="#">FLORAL</a></li>
+                        <li><a href="#">ANIMALS</a></li>
+                        <li><a href="#">PATTERNS</a></li>
+                        <li><a href="#">COLORS</a></li>
+                    </ul>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/angular-dragdrop")
+    @Scripts.Render("~/bundles/Squares")
+
+</body>
+</html>
