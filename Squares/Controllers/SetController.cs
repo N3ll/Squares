@@ -40,6 +40,14 @@ namespace Squares.Controllers
             return Content(jsonStringFromSomewhere, "application/json");
         }
 
+        
+        //used in LandingPageController.js in order to rate a set. The request is with a id of tha rated set. If the operation is successful, an id of the same set will be returned, so the view gets updated
+        public ActionResult RateSet(int? ratedSetId)
+        {
+            var jsonStringFromSomewhere = "{\"id\":1}";
+            return Content(jsonStringFromSomewhere, "application/json");
+        }
+
 
         public ActionResult Customize()
         {

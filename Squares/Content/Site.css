@@ -223,6 +223,10 @@ main {
 .thumbnail .caption {
   color: #070f0c; }
 
+.rate:hover{
+    color:red;
+}
+
 /*********** Main/See Set *******/
 .square {
   float: left;

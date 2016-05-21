@@ -48,8 +48,8 @@
                             <div class="row">
                                 <div class="col-sm-6 col-sm-push-3">
                                     <h3 class="pull-left">{{product.rating+" likes"}}</h3>
-                                    <a class="pull-right">
-                                        <span class="glyphicon glyphicon-heart pull-right"></span>
+                                    <a class="pull-right rate">
+                                        <span ng-click="homeCtrl.rate(product.id)" class="glyphicon glyphicon-heart pull-right "></span>
                                     </a>
                                 </div>
                             </div>

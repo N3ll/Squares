@@ -25,6 +25,14 @@
           );
     }
 
+    SetsService.rateSet = function (idRatedSet) {
+        return $http.post(
+            '/Set/RateSet', {
+                setId: idRatedSet
+            }
+        );
+    }
+
 
     //************** Uncomment in order to test with dummy data. No DB **********************************
 
